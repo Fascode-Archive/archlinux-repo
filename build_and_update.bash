@@ -57,5 +57,7 @@ for (( i=0; i<number_of_pkg_aur ; i++ )); do
 done
 
 ## データーベース作成と作業ディレクトリ削除
-repo-add $(pwd)/repo/x86_64/hayao.db.tar.gz *.pkg.tar.xz
+cd $(pwd)/repo/x86_64
+repo-add hayao.db.tar.gz *.pkg.tar.xz
 rm -r $working_directory
+cd - > /dev/null
