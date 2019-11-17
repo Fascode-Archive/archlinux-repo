@@ -11,10 +11,10 @@ SigLevel = Optional TrustAll
 # このリポジトリのパッケージをすべて入れる
 
 ```
-sudo cat << EOF >> /etc/pacman.conf
-[hayao]
-Server = https://hayao0819.github.io/pacman-repo/repo/$arch
-SigLevel = Optional TrustAll
-EOF
+sudo echo -e "
+[hayao]\n
+Server = https://hayao0819.github.io/pacman-repo/repo/$arch\n
+SigLevel = Optional TrustAll\n
+" >> /etc/pacman.conf
 sudo pacman -Ss | grep hayao | awk '{print $1}' | sudo pacman -S -
 ```
