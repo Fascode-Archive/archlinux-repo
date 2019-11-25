@@ -2,6 +2,7 @@
 
 ## 変数
 add_pkg_aur=($@)
+repo_name=hayao
 working_directory=/tmp/build_aur
 number_of_pkg_aur=${#add_pkg_aur[*]}
 export_directory=$(pwd)
@@ -58,6 +59,12 @@ done
 
 ## データーベース作成と作業ディレクトリ削除
 cd $(pwd)/repo/x86_64
-repo-add hayao.db.tar.gz *.pkg.tar.xz
+if [[ -f $(pwd)/repo/x86_64/${repo_name}.db.tar.gz ]]; then
+    rm ${repo_name}.db
+    rm ${repo_name}.db.tar.gz
+    rm ${repo_name}.files
+    rm ${repo_name}.files.tar.gz
+fi
+repo-add ${repo_name}.db.tar.gz *.pkg.tar.xz
 rm -r $working_directory
 cd - > /dev/null
