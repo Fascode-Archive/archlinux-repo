@@ -40,22 +40,25 @@ export_directory=$(pwd)/repo/x86_64
 
 
 ## ビルド
-for (( i=0; i<number_of_pkg_aur ; i++ )); do
-    # Clone
-    git clone https://aur.archlinux.org/${add_pkg_aur[$i]}.git $working_directory/${add_pkg_aur[$i]}
-    # ビルド
-    cd $working_directory/${add_pkg_aur[$i]}
-    makepkg -s
-    # 移動
-    if [[ -w $export_directory ]]; then
-        mv *.pkg.tar.xz $export_directory
-    else
-        echo "[$(basename ${BASH_SOURCE[0]})] 出力先に書き込み権限がありません。"
-    fi
-    cd - >> /dev/null
-    # 削除
-    rm -rf $working_directory/${add_pkg_aur[$i]}
-done
+if [[ ! $1 = "update_db" ]]; then
+    for (( i=0; i<number_of_pkg_aur ; i++ )); do
+        # Clone
+        git clone https://aur.archlinux.org/${add_pkg_aur[$i]}.git $working_directory/${add_pkg_aur[$i]}
+        # ビルド
+        cd $working_directory/${add_pkg_aur[$i]}
+        makepkg -s
+        # 移動
+        if [[ -w $export_directory ]]; then
+            mv *.pkg.tar.xz $export_directory
+        else
+            echo "[$(basename ${BASH_SOURCE[0]})] 出力先に書き込み権限がありません。"
+        fi
+        cd - >> /dev/null
+        # 削除
+        rm -rf $working_directory/${add_pkg_aur[$i]}
+    done
+fi
+
 
 ## データーベース作成と作業ディレクトリ削除
 cd $(pwd)/repo/x86_64
