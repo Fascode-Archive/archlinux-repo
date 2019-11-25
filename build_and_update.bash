@@ -40,7 +40,7 @@ export_directory=$(pwd)/repo/x86_64
 
 
 ## ビルド
-if [[ ! $1 = "update_db" ]]; then
+if [[ ! $1 = "update" ]]; then
     for (( i=0; i<number_of_pkg_aur ; i++ )); do
         # Clone
         git clone https://aur.archlinux.org/${add_pkg_aur[$i]}.git $working_directory/${add_pkg_aur[$i]}
