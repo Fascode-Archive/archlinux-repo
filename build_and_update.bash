@@ -63,10 +63,10 @@ fi
 ## データーベース作成と作業ディレクトリ削除
 cd $(pwd)/repo/x86_64
 if [[ -f $(pwd)/repo/x86_64/${repo_name}.db.tar.gz ]]; then
-    rm ${repo_name}.db
-    rm ${repo_name}.db.tar.gz
-    rm ${repo_name}.files
-    rm ${repo_name}.files.tar.gz
+    rm ${repo_name}.db*
+    rm ${repo_name}.db.tar.gz*
+    rm ${repo_name}.files*
+    rm ${repo_name}.files.tar.gz*
 fi
 repo-add ${repo_name}.db.tar.gz *.pkg.tar.xz
 rm -r $working_directory
