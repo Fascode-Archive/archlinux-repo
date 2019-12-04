@@ -5,3 +5,4 @@ git stage * -u
 printf "変更点を入力 : "
 read cmt
 git commit -m "$cmt"
+git push
