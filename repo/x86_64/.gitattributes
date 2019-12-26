@@ -1,0 +1,5 @@
+flast-4.8.3-1-x86_64.pkg.tar.xz filter=lfs diff=lfs merge=lfs -text
+freeoffice-973-1-x86_64.pkg.tar.xz filter=lfs diff=lfs merge=lfs -text
+station-1.63.2-1-x86_64.pkg.tar.xz filter=lfs diff=lfs merge=lfs -text
+tor-browser-9.0.2-1-x86_64.pkg.tar.xz filter=lfs diff=lfs merge=lfs -text
+vivaldi-2.10.1745.23-1-x86_64.pkg.tar.xz filter=lfs diff=lfs merge=lfs -text
